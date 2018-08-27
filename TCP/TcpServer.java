@@ -2,7 +2,7 @@
 import java.net.*;
 import java.io.*;
 
-public class TcpServer{
+public class TcpServer implements Runnable{
 
 	public static void main(String [] args){
 	
@@ -15,7 +15,10 @@ public class TcpServer{
 		try{
 		
 		ServerSocket s = new ServerSocket(1872);
-		 ss= s.accept();
+		
+		//waitin for client
+		
+		ss= s.accept();
 		s.close();
 		din = new DataInputStream(ss.getInputStream());
 		 dout = new DataOutputStream(ss.getOutputStream());
@@ -58,8 +61,6 @@ public class TcpServer{
 		}
 		dout.writeUTF(messageOut);
 		dout.flush();
-		
-		
 			
 		}
 		
@@ -70,5 +71,8 @@ public class TcpServer{
 		}
 	}
 
-
+	void run(){
+	
+	
+	}		
 }
